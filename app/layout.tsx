@@ -27,6 +27,26 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Sweesh - Voice to Text",
   description: "Fast, intuitive voice-to-text idea capture tool",
+  openGraph: {
+    title: "Sweesh - Voice to Text",
+    description: "Fast, intuitive voice-to-text idea capture tool",
+    type: "website",
+    url: "https://sweesh-glm47.vercel.app",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://sweesh-glm47.vercel.app'}/api/og`,
+        width: 1200,
+        height: 630,
+        alt: "Sweesh - Fast, intuitive voice-to-text idea capture tool",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sweesh - Voice to Text",
+    description: "Fast, intuitive voice-to-text idea capture tool",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://sweesh-glm47.vercel.app'}/api/og`],
+  },
   icons: {
     icon: [
       { url: "/icons/32x32.png", sizes: "32x32", type: "image/png" },
