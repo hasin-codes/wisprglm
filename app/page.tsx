@@ -59,15 +59,19 @@ export default function Home() {
 
   useEffect(() => {
     // Add demo transcriptions only after zustand has hydrated from localStorage
-    // and only if we haven't initialized yet
+    // and only if we haven't added demo transcriptions yet
     if (!hasInitialized.current && hasHydrated) {
       hasInitialized.current = true;
-      const existingIds = new Set(transcriptions.map((t) => t.id));
-      demoTranscriptions.forEach((t) => {
-        if (!existingIds.has(t.id)) {
-          addTranscription(t);
-        }
-      });
+      const hasAddedDemos = localStorage.getItem('sweesh-demos-added') === 'true';
+      if (!hasAddedDemos) {
+        const existingIds = new Set(transcriptions.map((t) => t.id));
+        demoTranscriptions.forEach((t) => {
+          if (!existingIds.has(t.id)) {
+            addTranscription(t);
+          }
+        });
+        localStorage.setItem('sweesh-demos-added', 'true');
+      }
     }
   }, [hasHydrated, transcriptions, addTranscription]);
 
