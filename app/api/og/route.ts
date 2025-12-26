@@ -3,14 +3,14 @@ import { ImageResponse } from 'next/og';
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    
+
     const title = searchParams.get('title') ?? 'Sweesh - Voice to Text';
     const description = searchParams.get('description') ?? 'Fast, intuitive voice-to-text idea capture tool';
     const theme = searchParams.get('theme') ?? 'dark';
 
     return new ImageResponse(
       (
-        <div 
+        <div
           style={{
             height: '100%',
             width: '100%',
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
           }}
         >
           {/* Background texture effect */}
-          <div 
+          <div
             style={{
               position: 'absolute',
               top: 0,
@@ -36,7 +36,7 @@ export async function GET(request: Request) {
           />
 
           {/* Gradient header strip */}
-          <div 
+          <div
             style={{
               position: 'absolute',
               top: 0,
@@ -49,7 +49,7 @@ export async function GET(request: Request) {
           />
 
           {/* Main content */}
-          <div 
+          <div
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -61,7 +61,7 @@ export async function GET(request: Request) {
             }}
           >
             {/* Logo placeholder */}
-            <div 
+            <div
               style={{
                 width: 120,
                 height: 120,
@@ -80,9 +80,9 @@ export async function GET(request: Request) {
                 <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
                 <line x1="12" x2="12" y1="19" y2="22" />
               </svg>
-              
+
               {/* Subtle shimmer effect */}
-              <div 
+              <div
                 style={{
                   position: 'absolute',
                   top: 0,
@@ -92,12 +92,12 @@ export async function GET(request: Request) {
                   borderRadius: 24,
                   background: 'linear-gradient(45deg, transparent 40%, rgba(220, 38, 38, 0.1), transparent 60%)',
                   backgroundSize: '300% 300%',
-                  animation: 'shimmer 2s infinite',
+                  // Note: ImageResponse doesn't support CSS animations, so we'll omit the animation
                 }}
               />
             </div>
 
-            <h1 
+            <h1
               style={{
                 fontSize: 64,
                 fontWeight: 700,
@@ -110,8 +110,8 @@ export async function GET(request: Request) {
             >
               {title}
             </h1>
-            
-            <p 
+
+            <p
               style={{
                 fontSize: 28,
                 fontWeight: 400,
@@ -125,15 +125,15 @@ export async function GET(request: Request) {
             </p>
 
             {/* Decorative elements */}
-            <div 
+            <div
               style={{
                 display: 'flex',
                 gap: 16,
                 marginTop: 40,
               }}
             >
-              {[...Array(3)].map((_, i) => (
-                <div 
+              {Array(3).map((_, i) => (
+                <div
                   key={i}
                   style={{
                     width: 48,
@@ -146,7 +146,7 @@ export async function GET(request: Request) {
                     justifyContent: 'center',
                   }}
                 >
-                  <div 
+                  <div
                     style={{
                       width: 24,
                       height: 4,
@@ -160,7 +160,7 @@ export async function GET(request: Request) {
           </div>
 
           {/* Bottom accent */}
-          <div 
+          <div
             style={{
               position: 'absolute',
               bottom: 0,
